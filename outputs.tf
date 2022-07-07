@@ -15,6 +15,10 @@ output "key_management_crn" {
 output "key_management_guid" {
   description = "GUID for KMS instance"
   value       = local.key_management_guid
+  depends_on = [
+    ibm_iam_authorization_policy.server_protect_policy,
+    ibm_iam_authorization_policy.block_storage_policy
+  ]
 }
 
 ##############################################################################
@@ -45,6 +49,10 @@ output "keys" {
       crn       = ibm_kms_key.key[kms_key.name].crn
       key_id    = ibm_kms_key.key[kms_key.name].key_id
     }
+  ]
+  depends_on = [
+    ibm_iam_authorization_policy.server_protect_policy,
+    ibm_iam_authorization_policy.block_storage_policy
   ]
 }
 

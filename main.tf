@@ -101,7 +101,10 @@ resource "ibm_kms_key" "key" {
   endpoint_type   = each.value.endpoint
   iv_value        = each.value.iv_value
   encrypted_nonce = each.value.encrypted_nonce
-  depends_on      = [ibm_iam_authorization_policy.policy]
+  depends_on      = [
+    ibm_iam_authorization_policy.server_protect_policy,
+    ibm_iam_authorization_policy.block_storage_policy
+  ]
 }
 
 ##############################################################################

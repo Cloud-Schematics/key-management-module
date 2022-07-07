@@ -50,10 +50,6 @@ output "keys" {
       key_id    = ibm_kms_key.key[kms_key.name].key_id
     }
   ]
-  depends_on = [
-    ibm_iam_authorization_policy.server_protect_policy,
-    ibm_iam_authorization_policy.block_storage_policy
-  ]
 }
 
 ##############################################################################

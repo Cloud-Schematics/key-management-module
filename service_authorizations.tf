@@ -8,7 +8,7 @@ resource "ibm_iam_authorization_policy" "policy" {
   source_service_name         = "server-protect"
   target_service_name         = local.use_hs_crypto == true ? "hs-crypto" : "kms"
   target_resource_instance_id = local.key_management_guid
-  roles                       = ["Reader"]
+  roles                       = ["Reader", "Authorization Delegator"]
   description                 = "Allow block storage volumes to be encrypted by Key Management instance."
 }
 

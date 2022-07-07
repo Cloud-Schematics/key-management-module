@@ -94,7 +94,23 @@ variable "keys" {
     })
   )
 
-  default = []
+  default = [
+    {
+      key_ring = "at-test-slz-ring"
+      name     = "at-test-slz-key"
+      root_key = true
+    },
+    {
+      key_ring = "at-test-slz-ring"
+      name     = "at-test-atracker-key"
+      root_key = true
+    },
+    {
+      key_ring = "at-test-slz-ring"
+      name     = "at-test-vsi-volume-key"
+      root_key = true
+    },
+  ]
 
   validation {
     error_message = "Each key must have a unique name."
